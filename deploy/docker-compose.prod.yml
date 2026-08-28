@@ -1,0 +1,14 @@
+# Запуск собранного образа. Данные пока в памяти: перезапуск контейнера
+# обнуляет CRM. Postgres появится здесь на этапе 1 вместе с EF Core.
+services:
+  crm:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    image: crm-vova:latest
+    container_name: crm-vova
+    ports:
+      - "8080:8080"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+    restart: unless-stopped

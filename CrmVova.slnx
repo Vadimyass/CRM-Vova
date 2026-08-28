@@ -1,0 +1,13 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Crm.Api/Crm.Api.csproj" />
+    <Project Path="src/Crm.Application/Crm.Application.csproj" />
+    <Project Path="src/Crm.Bpm/Crm.Bpm.csproj" />
+    <Project Path="src/Crm.Contracts/Crm.Contracts.csproj" />
+    <Project Path="src/Crm.Domain/Crm.Domain.csproj" />
+    <Project Path="src/Crm.Infrastructure/Crm.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Crm.Bpm.Tests/Crm.Bpm.Tests.csproj" />
+  </Folder>
+</Solution>

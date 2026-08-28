@@ -1,0 +1,28 @@
+# .NET
+bin/
+obj/
+publish/
+*.user
+*.suo
+.vs/
+
+# Node
+node_modules/
+dist/
+.npm/
+
+# IDE
+.idea/
+*.DotSettings.user
+
+# Локальные запуски
+logs/
+appsettings.Development.local.json
+.env
+.env.local
+
+# macOS
+.DS_Store
+
+# Архивы переноса
+*.zip

@@ -1,0 +1,14 @@
+**/bin
+**/obj
+**/node_modules
+**/dist
+**/logs
+.git
+.github
+.idea
+.vs
+*.zip
+*.command
+scripts
+tests
+deploy

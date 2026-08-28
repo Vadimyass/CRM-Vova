@@ -1,0 +1,12 @@
+* text=auto eol=lf
+
+*.png binary
+*.jpg binary
+*.ico binary
+
+# Скрипты запуска обязаны остаться с LF, иначе macOS их не выполнит.
+*.sh text eol=lf
+*.command text eol=lf
+
+# Шум в diff от лок-файлов не нужен, но в истории они остаются.
+package-lock.json linguist-generated=true -diff
