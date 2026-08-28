@@ -46,3 +46,35 @@ jobs:
 
       - name: Типы и сборка
         run: npm run build
+
+  image:
+    name: Docker-образ
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: docker/setup-buildx-action@v3
+
+      # Только сборка, без публикации: проверяем, что образ собирается.
+      # Публикацию в реестр добавим, когда будет известна площадка хостинга.
+      - name: Сборка образа
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: false
+          load: true
+          tags: crm-vova:ci
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Проверка, что контейнер отдаёт SPA и API
+        run: |
+          docker run -d --name crm -p 8080:8080 crm-vova:ci
+          for _ in $(seq 1 60); do
+            curl -fsS http://localhost:8080/api/stages >/dev/null 2>&1 && break
+            sleep 1
+          done
+          python3 scripts/smoke.py http://localhost:8080
+          test "$(curl -s -o /dev/null -w '%{http_code}' http://localhost:8080/)" = "200"
+          test "$(curl -s -o /dev/null -w '%{http_code}' http://localhost:8080/api/nope)" = "404"
+          docker rm -f crm
