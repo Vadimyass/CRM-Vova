@@ -7,6 +7,17 @@ on:
   workflow_dispatch:
 
 jobs:
+  secrets:
+    name: Секреты
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Проверка на секреты в отслеживаемых файлах
+        run: ./scripts/check-secrets.sh
+
   backend:
     name: Бэкенд и движок процессов
     runs-on: ubuntu-latest

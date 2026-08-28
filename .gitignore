@@ -17,9 +17,27 @@ dist/
 
 # Локальные запуски
 logs/
-appsettings.Development.local.json
+
+# --- Секреты: всё это никогда не попадает в репозиторий ---
 .env
-.env.local
+.env.*
+!.env.example
+appsettings.Local.json
+appsettings.*.Local.json
+secrets.json
+*.pfx
+*.p12
+*.pem
+*.key
+*.jks
+*.keystore
+id_rsa
+id_ed25519
+
+# Выгрузки и дампы данных
+*.sql
+*.dump
+*.bak
 
 # macOS
 .DS_Store
